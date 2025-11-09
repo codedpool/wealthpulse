@@ -67,7 +67,7 @@ export async function POST(request) {
     // Configure model and web search based on enableWebSearch flag
     if (enableWebSearch) {
       // Option 1: Use the :online variant (simpler approach)
-      requestConfig.model = "google/gemini-2.5-pro:online";
+      requestConfig.model = "google/gemini-2.5-flash";
       
       // Option 2: Alternative - use web plugin explicitly with custom settings
       // Uncomment the lines below and comment the line above to use the plugin approach
