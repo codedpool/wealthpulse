@@ -14,18 +14,43 @@ logger = logging.getLogger(__name__)
 # Load environment variables
 load_dotenv()
 
-# Initialize MongoDB client
-try:
-    client = MongoClient(os.getenv('MONGODB_URI'))
-    db = client.portfolio_db  # Use a database named portfolio_db
-    collection = db.portfolio_items  # Use a collection named portfolio_items
-    
-    # Create indexes for efficient querying
-    collection.create_index([("user_id", 1), ("symbol", 1)], unique=True)
-    logger.info("MongoDB connection established successfully")
-except Exception as e:
-    logger.error(f"Error connecting to MongoDB: {str(e)}")
-    raise
+# Defer MongoDB initialization to an explicit function so importing this
+# module doesn't try to connect during app startup (which can fail when
+# MongoDB isn't available). Call `init_db()` from the FastAPI startup event.
+client = None
+db = None
+collection = None
+
+def init_db(uri: str | None = None, create_indexes: bool = True) -> bool:
+    """Initialize MongoDB client and collection.
+
+    Returns True if connection was established, False otherwise.
+    This function intentionally does not raise so the FastAPI app can start
+    even when MongoDB is down; route handlers will return 503 if the DB
+    isn't available.
+    """
+    global client, db, collection
+
+    uri = uri or os.getenv('MONGODB_URI')
+    if not uri:
+        logger.warning("MONGODB_URI not set: skipping MongoDB initialization.")
+        return False
+
+    try:
+        client = MongoClient(uri)
+        db = client.portfolio_db
+        collection = db.portfolio_items
+
+        if create_indexes:
+            collection.create_index([("user_id", 1), ("symbol", 1)], unique=True)
+
+        logger.info("MongoDB connection established successfully")
+        return True
+    except Exception as e:
+        logger.error(f"Error connecting to MongoDB: {str(e)}")
+        client = None
+        collection = None
+        return False
 
 router = APIRouter()
 
@@ -45,6 +70,11 @@ class PortfolioItemResponse(BaseModel):
 @router.post("/api/portfolio/add/{user_id}", response_model=PortfolioItemResponse)
 async def add_to_portfolio(user_id: str, item: PortfolioItem):
     logger.info(f"Attempting to add item to portfolio for user {user_id}: {item}")
+    # Ensure DB is initialized
+    if collection is None:
+        logger.error("Attempted DB operation while MongoDB is not initialized")
+        raise HTTPException(status_code=503, detail="Database not available")
+
     try:
         # Check if item already exists
         existing_item = collection.find_one({
@@ -90,6 +120,10 @@ async def add_to_portfolio(user_id: str, item: PortfolioItem):
 async def get_portfolio(user_id: str):
     logger.info(f"Fetching portfolio for user {user_id}")
     try:
+        if collection is None:
+            logger.error("Attempted DB operation while MongoDB is not initialized")
+            raise HTTPException(status_code=503, detail="Database not available")
+
         items = list(collection.find({"user_id": user_id}))
         
         return [
@@ -110,6 +144,10 @@ async def get_portfolio(user_id: str):
 async def remove_from_portfolio(user_id: str, item_id: str):
     logger.info(f"Attempting to remove item {item_id} for user {user_id}")
     try:
+        if collection is None:
+            logger.error("Attempted DB operation while MongoDB is not initialized")
+            raise HTTPException(status_code=503, detail="Database not available")
+
         from bson.objectid import ObjectId
         
         # Convert string ID to MongoDB ObjectId

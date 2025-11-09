@@ -13,9 +13,9 @@ export default function Navbar() {
 
   const links = [
     { name: "Features", href: "/#features" },
-    { name: "Stock-Dashboard", href: "/StockDashboard" },
-    { name: "MutualFund-Dashboard", href: "/MFDashboard" },
-    { name: "Crypto-Dashboard", href: "/CryptoDashboard" },
+    { name: "Stock", href: "/StockDashboard" },
+    { name: "MutualFund", href: "/MFDashboard" },
+    { name: "Crypto", href: "/CryptoDashboard" },
     { name: "EducationHub", href: "/Courses" },
   ];
 
