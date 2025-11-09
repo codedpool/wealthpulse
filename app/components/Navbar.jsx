@@ -13,7 +13,6 @@ export default function Navbar() {
 
   const links = [
     { name: "Features", href: "/#features" },
-    { name: "Testimonials", href: "/#testimonials" },
     { name: "Stock-Dashboard", href: "/StockDashboard" },
     { name: "MutualFund-Dashboard", href: "/MFDashboard" },
     { name: "Crypto-Dashboard", href: "/CryptoDashboard" },
@@ -26,62 +25,66 @@ export default function Navbar() {
         openNavigation ? "bg-[#0b0b12]/95" : "bg-[#0b0b12]/70"
       }`}
     >
-      <div className="flex items-center justify-between max-w-7xl mx-auto px-6 py-4">
+      <div className="flex items-center justify-between max-w-7xl mx-auto px-6 py-3 md:py-4">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2">
-          <span className="hidden md:block text-white font-semibold text-lg tracking-wide">
+          <span className="hidden md:block text-white font-semibold text-base tracking-wide">
             WealthPulse
           </span>
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden lg:flex items-center gap-8">
+        <nav className="hidden lg:flex items-center gap-10">
           {links.map((link) => (
             <Link
               key={link.name}
               href={link.href}
-              className="text-sm text-gray-300 hover:text-white transition-colors"
+              className="text-[0.9rem] text-gray-300 hover:text-white transition-colors px-2 whitespace-nowrap"
+
             >
               {link.name}
             </Link>
           ))}
           {isSignedIn && !isLoading && (
-            <Link href="/Portfolio" className="text-sm text-purple-400 hover:text-purple-300 transition-colors">
+            <Link
+              href="/Portfolio"
+              className="text-[0.9rem] text-purple-400 hover:text-purple-300 transition-colors px-2"
+            >
               My Portfolio
             </Link>
           )}
         </nav>
 
         {/* Auth Buttons */}
-        <div className="hidden lg:flex items-center gap-3">
+        <div className="hidden lg:flex items-center gap-4">
           {isLoading ? (
             <div className="animate-pulse bg-white/10 h-9 w-24 rounded-full"></div>
           ) : isSignedIn && user ? (
             <div className="flex items-center gap-3">
-              <img 
-                src={user.picture || '/vercel.svg'} 
-                alt={user.name || 'user'} 
-                className="w-9 h-9 rounded-full object-cover" 
+              <img
+                src={user.picture || "/vercel.svg"}
+                alt={user.name || "user"}
+                className="w-8 h-8 rounded-full object-cover"
               />
               <span className="text-sm text-gray-200">{user.name || user.email}</span>
-              <a 
-                href={logoutHref} 
-                className="text-sm text-white/90 bg-white/5 hover:bg-white/10 px-4 py-2 rounded-full border border-white/10 transition-colors"
+              <a
+                href={logoutHref}
+                className="text-sm text-white/90 bg-white/5 hover:bg-white/10 px-3 py-1.5 rounded-full border border-white/10 transition-colors"
               >
                 Sign out
               </a>
             </div>
           ) : (
             <div className="flex items-center gap-3">
-              <a 
-                href={loginHref} 
-                className="text-sm text-white/90 bg-white/5 hover:bg-white/10 px-4 py-2 rounded-full border border-white/10 transition-colors"
+              <a
+                href={loginHref}
+                className="text-sm text-white/90 bg-white/5 hover:bg-white/10 px-3 py-1.5 rounded-full border border-white/10 transition-colors"
               >
                 Sign in
               </a>
-              <a 
-                href={`${loginHref}?screen_hint=signup`} 
-                className="text-sm font-semibold bg-linear-to-r from-[#9b5cff] to-[#f08bd6] text-white px-4 py-2 rounded-full shadow hover:scale-[1.02] transition-transform"
+              <a
+                href={`${loginHref}?screen_hint=signup`}
+                className="text-sm font-semibold bg-gradient-to-r from-[#9b5cff] to-[#f08bd6] text-white px-4 py-1.5 rounded-full shadow hover:scale-[1.02] transition-transform"
               >
                 Sign up
               </a>
@@ -94,10 +97,10 @@ export default function Navbar() {
           className="lg:hidden w-10 h-10 flex items-center justify-center rounded-md hover:bg-white/10 transition"
           onClick={toggleNavigation}
         >
-          <div className="space-y-1">
+          <div className="space-y-1.5">
             <span
               className={`block w-6 h-0.5 bg-white transition-all ${
-                openNavigation ? "rotate-45 translate-y-1.5" : ""
+                openNavigation ? "rotate-45 translate-y-2" : ""
               }`}
             ></span>
             <span
@@ -107,7 +110,7 @@ export default function Navbar() {
             ></span>
             <span
               className={`block w-6 h-0.5 bg-white transition-all ${
-                openNavigation ? "-rotate-45 -translate-y-1.5" : ""
+                openNavigation ? "-rotate-45 -translate-y-2" : ""
               }`}
             ></span>
           </div>
@@ -116,13 +119,13 @@ export default function Navbar() {
 
       {/* Mobile Nav Drawer */}
       {openNavigation && (
-        <nav className="lg:hidden fixed top-[70px] left-0 right-0 bg-[#0b0b12] border-t border-white/10 backdrop-blur-md flex flex-col items-center py-6 space-y-6 z-40">
+        <nav className="lg:hidden fixed top-[70px] left-0 right-0 bg-[#0b0b12] border-t border-white/10 backdrop-blur-md flex flex-col items-center py-6 space-y-5 z-40">
           {links.map((link) => (
             <Link
               key={link.name}
               href={link.href}
               onClick={handleNavClick}
-              className="text-gray-300 hover:text-white transition-colors text-lg"
+              className="text-gray-300 hover:text-white transition-colors text-base"
             >
               {link.name}
             </Link>
@@ -130,24 +133,24 @@ export default function Navbar() {
           {isLoading ? (
             <div className="animate-pulse bg-white/10 h-8 w-32 rounded-full"></div>
           ) : isSignedIn ? (
-            <Link 
-              href="/Portfolio" 
-              onClick={handleNavClick} 
-              className="text-purple-400 hover:text-purple-300 text-lg"
+            <Link
+              href="/Portfolio"
+              onClick={handleNavClick}
+              className="text-purple-400 hover:text-purple-300 text-base"
             >
               My Portfolio
             </Link>
           ) : (
             <div className="flex flex-col gap-3 items-center">
-              <a 
-                href={loginHref} 
+              <a
+                href={loginHref}
                 className="text-sm text-white/90 bg-white/5 hover:bg-white/10 px-4 py-2 rounded-full border border-white/10 transition-colors"
               >
                 Sign in
               </a>
-              <a 
-                href={`${loginHref}?screen_hint=signup`} 
-                className="text-sm font-semibold bg-linear-to-r from-[#9b5cff] to-[#f08bd6] text-white px-4 py-2 rounded-full shadow hover:scale-[1.02] transition-transform"
+              <a
+                href={`${loginHref}?screen_hint=signup`}
+                className="text-sm font-semibold bg-gradient-to-r from-[#9b5cff] to-[#f08bd6] text-white px-4 py-2 rounded-full shadow hover:scale-[1.02] transition-transform"
               >
                 Sign up
               </a>
