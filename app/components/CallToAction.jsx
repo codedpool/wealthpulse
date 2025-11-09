@@ -48,7 +48,7 @@ export const CallToAction = () => {
   <div className="container px-4">
     <motion.div
       ref={borderedDivRef}
-      className="relative cursor-grab border border-white/15 py-24 rounded-xl overflow-hidden group max-w-10xl mx-auto w-full" // increased max-width
+      className="relative cursor-grab border border-white/15 py-24 rounded-xl overflow-hidden group max-w-10xl mx-auto w-200%" // increased max-width
       animate={{
         backgroundPositionX: starsBg.width,
       }}

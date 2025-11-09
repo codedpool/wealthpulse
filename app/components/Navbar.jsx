@@ -12,12 +12,12 @@ export default function Navbar() {
   const handleNavClick = () => setOpenNavigation(false);
 
   const links = [
-    { name: "Why Choose Us", href: "/#features" },
+    { name: "Features", href: "/#features" },
     { name: "Testimonials", href: "/#testimonials" },
-    { name: "StockDashboard", href: "/StockDashboard" },
-    { name: "MFDashboard", href: "/MFDashboard" },
-    { name: "CryptoDashboard", href: "/CryptoDashboard" },
-    { name: "Courses", href: "/Courses" },
+    { name: "Stock-Dashboard", href: "/StockDashboard" },
+    { name: "MutualFund-Dashboard", href: "/MFDashboard" },
+    { name: "Crypto-Dashboard", href: "/CryptoDashboard" },
+    { name: "EducationHub", href: "/Courses" },
   ];
 
   return (
