@@ -153,8 +153,18 @@ wealthpulse/
 ![WealthPulse Landing Page](./public/frontend.png)
 ![WealthPulse Landing Page](./public/frontend2.png)
 
+### Stocks Component
+![Stocks Dashboard](./public/stock.png)
+![Stocks Data](./public/data.png)
 
+### Stocks Component
+![Stocks Dashboard](./public/stock.png)
 
+### Portfolio
+![Portfolio](./public/portfolio.png)
+
+### Education  Hub
+![Education Page](./public/edu.png)
 
 ## 🎯 Key Features in Detail
 
