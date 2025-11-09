@@ -17,8 +17,8 @@ const useDebounce = (value, delay) => {
 
 const fetchSchemes = async (search = "") => {
   const url = search
-    ? `/api/mutual/schemes?search=${encodeURIComponent(search)}`
-    : "/api/mutual/schemes";
+    ? `${process.env.NEXT_PUBLIC_API_URL}/api/mutual/schemes?search=${encodeURIComponent(search)}`
+    : `${process.env.NEXT_PUBLIC_API_URL}/api/mutual/schemes`;
   const res = await fetch(url);
   if (!res.ok) return {};
   return await res.json();

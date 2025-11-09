@@ -147,11 +147,11 @@ export default function CryptoDetailsPage() {
     // TODO: Replace with actual API calls once your friend provides the endpoints
     // For now, setting empty/mock data
     Promise.all([
-      fetch(`/api/crypto/coin-details/${symbol}`).then(r => r.json()).catch(() => ({})),
-      fetch(`/api/crypto/historical-price/${symbol}`).then(r => r.json()).catch(() => []),
-      fetch(`/api/crypto/performance-heatmap/${symbol}`).then(r => r.json()).catch(() => []),
-      fetch(`/api/crypto/risk-volatility/${symbol}`).then(r => r.json()).catch(() => ({})),
-      fetch(`/api/crypto/monte-carlo-prediction/${symbol}`).then(r => r.json()).catch(() => ({})),
+      fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/crypto/coin-details/${symbol}`).then(r => r.json()).catch(() => ({})),
+      fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/crypto/historical-price/${symbol}`).then(r => r.json()).catch(() => []),
+      fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/crypto/performance-heatmap/${symbol}`).then(r => r.json()).catch(() => []),
+      fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/crypto/risk-volatility/${symbol}`).then(r => r.json()).catch(() => ({})),
+      fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/crypto/monte-carlo-prediction/${symbol}`).then(r => r.json()).catch(() => ({})),
     ]).then(([metaData, prices, heat, risk, mc]) => {
       setMeta(metaData);
       setPriceHistory(prices);
@@ -175,7 +175,7 @@ export default function CryptoDetailsPage() {
     setShowCrypto1Dropdown(true);
     const timeoutId = setTimeout(async () => {
       try {
-        const response = await fetch(`/api/crypto/coins?search=${encodeURIComponent(crypto1Query)}`);
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/crypto/coins?search=${encodeURIComponent(crypto1Query)}`);
         const data = await response.json();
         setCrypto1Suggestions(data || []);
       } catch (error) {
@@ -197,7 +197,7 @@ export default function CryptoDetailsPage() {
     setShowCrypto2Dropdown(true);
     const timeoutId = setTimeout(async () => {
       try {
-        const response = await fetch(`/api/crypto/coins?search=${encodeURIComponent(crypto2Query)}`);
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/crypto/coins?search=${encodeURIComponent(crypto2Query)}`);
         const data = await response.json();
         setCrypto2Suggestions(data || []);
       } catch (error) {
@@ -214,7 +214,7 @@ export default function CryptoDetailsPage() {
     if (!selectedCrypto1) return;
     (async () => {
       try {
-        const res = await fetch(`/api/crypto/coin-details/${selectedCrypto1.id}`);
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/crypto/coin-details/${selectedCrypto1.id}`);
         const data = await res.json();
         setCrypto1Data({ meta: data });
       } catch (e) {
@@ -228,7 +228,7 @@ export default function CryptoDetailsPage() {
     if (!selectedCrypto2) return;
     (async () => {
       try {
-        const res = await fetch(`/api/crypto/coin-details/${selectedCrypto2.id}`);
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/crypto/coin-details/${selectedCrypto2.id}`);
         const data = await res.json();
         setCrypto2Data({ meta: data });
       } catch (e) {

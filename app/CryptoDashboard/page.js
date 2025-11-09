@@ -16,8 +16,8 @@ const useDebounce = (value, delay) => {
 
 const fetchCoins = async (search = "") => {
   const url = search
-    ? `/api/crypto/coins?search=${encodeURIComponent(search)}`
-    : "/api/crypto/famous"; // <- NOTE: fetch famous coins for blank search
+    ? `${process.env.NEXT_PUBLIC_API_URL}/api/crypto/coins?search=${encodeURIComponent(search)}`
+    : `${process.env.NEXT_PUBLIC_API_URL}/api/crypto/famous`; // <- NOTE: fetch famous coins for blank search
   const res = await fetch(url);
   if (!res.ok) return [];
   return await res.json();

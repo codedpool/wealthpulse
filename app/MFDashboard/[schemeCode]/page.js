@@ -148,11 +148,11 @@ export default function MFDetailsPage() {
   useEffect(() => {
     setLoading(true);
     Promise.all([
-      fetch(`/api/mutual/scheme-details/${schemeCode}`).then((r) => r.json()),
-      fetch(`/api/mutual/historical-nav/${schemeCode}`).then((r) => r.json()),
-      fetch(`/api/mutual/performance-heatmap/${schemeCode}`).then((r) => r.json()),
-      fetch(`/api/mutual/risk-volatility/${schemeCode}`).then((r) => r.json()),
-      fetch(`/api/mutual/monte-carlo-prediction/${schemeCode}`).then((r) => r.json()),
+      fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/mutual/scheme-details/${schemeCode}`).then((r) => r.json()),
+      fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/mutual/historical-nav/${schemeCode}`).then((r) => r.json()),
+      fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/mutual/performance-heatmap/${schemeCode}`).then((r) => r.json()),
+      fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/mutual/risk-volatility/${schemeCode}`).then((r) => r.json()),
+      fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/mutual/monte-carlo-prediction/${schemeCode}`).then((r) => r.json()),
     ]).then(([meta, navs, heat, risk, mc]) => {
       setMeta(meta);
       setNavHistory(navs);
@@ -176,7 +176,7 @@ export default function MFDetailsPage() {
 
     const timeoutId = setTimeout(async () => {
       try {
-        const response = await fetch(`/api/mutual/schemes?search=${encodeURIComponent(fund1Query)}`);
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/mutual/schemes?search=${encodeURIComponent(fund1Query)}`);
         const data = await response.json();
         const suggestions = Object.entries(data).map(([code, name]) => ({ code, name })).slice(0, 10);
         setFund1Suggestions(suggestions);
@@ -201,7 +201,7 @@ export default function MFDetailsPage() {
 
     const timeoutId = setTimeout(async () => {
       try {
-        const response = await fetch(`/api/mutual/schemes?search=${encodeURIComponent(fund2Query)}`);
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/mutual/schemes?search=${encodeURIComponent(fund2Query)}`);
         const data = await response.json();
         const suggestions = Object.entries(data).map(([code, name]) => ({ code, name })).slice(0, 10);
         setFund2Suggestions(suggestions);
@@ -221,7 +221,7 @@ export default function MFDetailsPage() {
     if (!selectedFund1) return;
     (async () => {
       try {
-        const res = await fetch(`/api/mutual/scheme-details/${selectedFund1.code}`);
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/mutual/scheme-details/${selectedFund1.code}`);
         const data = await res.json();
         setFund1Data({ meta: data });
       } catch (e) {
@@ -235,7 +235,7 @@ export default function MFDetailsPage() {
     if (!selectedFund2) return;
     (async () => {
       try {
-        const res = await fetch(`/api/mutual/scheme-details/${selectedFund2.code}`);
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/mutual/scheme-details/${selectedFund2.code}`);
         const data = await res.json();
         setFund2Data({ meta: data });
       } catch (e) {

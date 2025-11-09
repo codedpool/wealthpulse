@@ -68,7 +68,7 @@ export default function PortfolioPage() {
 
       try {
         const userId = encodeURIComponent(user.sub || "");
-        const response = await fetch(`/api/portfolio/${userId}`);
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/portfolio/${userId}`);
 
         if (!response.ok) {
           throw new Error("Failed to fetch portfolio");
@@ -81,11 +81,11 @@ export default function PortfolioPage() {
             try {
               let riskResponse, navResponse;
               if (item.item_type === "stock") {
-                riskResponse = await fetch(`/api/stock/risk-volatility/${item.symbol}`);
-                navResponse = await fetch(`/api/stock/profile/${item.symbol}`);
+                riskResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/stock/risk-volatility/${item.symbol}`);
+                navResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/stock/profile/${item.symbol}`);
               } else {
-                riskResponse = await fetch(`/api/mutual/risk-volatility/${item.symbol}`);
-                navResponse = await fetch(`/api/mutual/scheme-details/${item.symbol}`);
+                riskResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/mutual/risk-volatility/${item.symbol}`);
+                navResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/mutual/scheme-details/${item.symbol}`);
               }
 
               const risk = await riskResponse.json();
@@ -123,7 +123,7 @@ export default function PortfolioPage() {
 
     try {
       const userId = encodeURIComponent(user.sub || "");
-      const response = await fetch(`/api/portfolio/${userId}/${itemId}`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/portfolio/${userId}/${itemId}`, {
         method: "DELETE",
       });
 

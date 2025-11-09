@@ -29,13 +29,13 @@ export default function StockDashboard() {
   const [error, setError] = useState("");
   const [page, setPage] = useState(1);
 
-  // Load random stocks initially (e.g., from /api/stock/list)
+  // Load random stocks initially (e.g., from backend API)
   useEffect(() => {
     if (debouncedSearch) return; // skip random-load if searching
 
     setLoading(true);
     setError("");
-    fetch(`/api/stock/list`)
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/stock/list`)
       .then(async (res) => {
         if (!res.ok) throw new Error("Failed to fetch stock list");
         const arr = await res.json();
@@ -55,7 +55,7 @@ export default function StockDashboard() {
     if (!debouncedSearch) return;
     setLoading(true);
     setError("");
-    fetch(`/api/stock/search?symbol=${encodeURIComponent(debouncedSearch)}`)
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/stock/search?symbol=${encodeURIComponent(debouncedSearch)}`)
       .then(async (res) => {
         if (!res.ok) throw new Error("Failed to fetch stock");
         const data = await res.json();

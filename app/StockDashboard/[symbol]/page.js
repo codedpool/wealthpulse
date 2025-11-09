@@ -141,11 +141,11 @@ import Navbar from "../../components/Navbar";
       (async () => {
         try {
           const endpoints = {
-            profile: `/api/stock/profile/${symbol}`,
-            history: `/api/stock/history/${symbol}`,
-            heatmap: `/api/stock/performance-heatmap/${symbol}`,
-            risk: `/api/stock/risk-volatility/${symbol}`,
-            montecarlo: `/api/stock/monte-carlo-prediction/${symbol}`,
+            profile: `${process.env.NEXT_PUBLIC_API_URL}/api/stock/profile/${symbol}`,
+            history: `${process.env.NEXT_PUBLIC_API_URL}/api/stock/history/${symbol}`,
+            heatmap: `${process.env.NEXT_PUBLIC_API_URL}/api/stock/performance-heatmap/${symbol}`,
+            risk: `${process.env.NEXT_PUBLIC_API_URL}/api/stock/risk-volatility/${symbol}`,
+            montecarlo: `${process.env.NEXT_PUBLIC_API_URL}/api/stock/monte-carlo-prediction/${symbol}`,
           };
 
           const results = {};
@@ -185,7 +185,7 @@ import Navbar from "../../components/Navbar";
       if (stock1Query.length < 1) return setStock1Suggestions([]);
       const id = setTimeout(async () => {
         try {
-          const res = await fetch(`/api/stock/search-stocks?q=${encodeURIComponent(stock1Query)}`);
+          const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/stock/search-stocks?q=${encodeURIComponent(stock1Query)}`);
           const data = await res.json();
           setStock1Suggestions(data || []);
           setShowStock1Dropdown(true); // Always show dropdown when searching
@@ -203,7 +203,7 @@ import Navbar from "../../components/Navbar";
       if (stock2Query.length < 1) return setStock2Suggestions([]);
       const id = setTimeout(async () => {
         try {
-          const res = await fetch(`/api/stock/search-stocks?q=${encodeURIComponent(stock2Query)}`);
+          const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/stock/search-stocks?q=${encodeURIComponent(stock2Query)}`);
           const data = await res.json();
           setStock2Suggestions(data || []);
           setShowStock2Dropdown(true); // Always show dropdown when searching
@@ -221,7 +221,7 @@ import Navbar from "../../components/Navbar";
       if (!selectedStock1) return;
       (async () => {
         try {
-          const res = await fetch(`/api/stock/profile/${selectedStock1.symbol}`);
+          const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/stock/profile/${selectedStock1.symbol}`);
           const data = await res.json();
           setStock1Data({ profile: data });
         } catch (e) {
@@ -235,7 +235,7 @@ import Navbar from "../../components/Navbar";
       if (!selectedStock2) return;
       (async () => {
         try {
-          const res = await fetch(`/api/stock/profile/${selectedStock2.symbol}`);
+          const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/stock/profile/${selectedStock2.symbol}`);
           const data = await res.json();
           setStock2Data({ profile: data });
         } catch (e) {
