@@ -154,11 +154,8 @@ wealthpulse/
 ![WealthPulse Landing Page](./public/frontend2.png)
 
 ### Stocks Component
-![Stocks Dashboard](./public/stock.png)
+![Stocks Dashboard](./public/stocks.png)
 ![Stocks Data](./public/data.png)
-
-### Stocks Component
-![Stocks Dashboard](./public/stock.png)
 
 ### Portfolio
 ![Portfolio](./public/portfolio.png)
