@@ -9,7 +9,8 @@ const initialVideos = [
   { title: "How to Invest in ETFs", videoId: "PHe0bXAIuk0" },
   { title: "Mutual Funds Explained", videoId: "1d_jYPL6uUI" },
   { title: "Cryptocurrency Investing", videoId: "9nlhmVrkv1Q" },
-  { title: "Understanding Bonds", videoId: "BWLM5oYqyMk" },
+  { title: "What Are Bonds & How Do They Work?", videoId: "xVU4byInxk4" },
+
   { title: "Ethereum and Smart Contracts", videoId: "pWGLtjG-F5c" },
 ];
 
