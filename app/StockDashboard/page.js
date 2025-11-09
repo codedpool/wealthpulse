@@ -74,7 +74,8 @@ export default function StockDashboard() {
   return (
     <>
     <Navbar />
-    <section className="py-18 px-7 min-h-[60vh] bg-gradient-to-b from-[#050511] via-[#0d1020] to-[#0b0b12]">
+    <section className="min-h-screen px-7 py-18 bg-gradient-to-b from-[#050511] via-[#0d1020] to-[#0b0b12] flex flex-col">
+
       <div className="max-w-5xl mx-auto">
         <h2 className="text-3xl font-bold mb-8 text-white text-center">View Stocks</h2>
         <div className="flex justify-center mb-8">
