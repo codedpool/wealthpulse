@@ -1,56 +1,52 @@
-# WealthPulse 📈
+#  WealthPulse
 
 > **Transforming complex finance into simple, smart decisions**
 
-WealthPulse is a comprehensive financial technology platform that combines AI-powered insights, real-time portfolio tracking, and educational resources to help investors make smarter financial decisions across stocks, mutual funds, and cryptocurrencies.
+WealthPulse is a comprehensive fintech platform that combines **AI-powered insights**, **real-time portfolio tracking**, and **educational resources** to help investors make smarter financial decisions across **stocks**, **mutual funds**, and **cryptocurrencies**.
 
-## ✨ Features
+---
+
+## ✨ Key Features
 
 ### 🤖 AI-Powered Investment Intelligence
-- **AI Investment Insights**: Get personalized recommendations powered by Google Gemini 2.0 Flash
-- **Portfolio Analysis**: Comprehensive AI-driven risk assessment and trend analysis
-- **Smart Chatbot**: Interactive financial assistant for instant guidance
-- **Auto-Generated Reports**: Detailed portfolio reports with risk metrics and recommendations
+- **AI Insights:** Personalized investment recommendations powered by **Google Gemini 2.0 Flash**
+- **Portfolio Analysis:** Comprehensive, AI-driven risk and trend assessment  
+- **Smart Chatbot:** Interactive financial assistant for instant support  
+- **Auto Reports:** Automatically generated portfolio insights with metrics and recommendations  
 
 ### 📊 Real-Time Portfolio Management
-- **Multi-Asset Tracking**: Stocks, mutual funds, and cryptocurrencies in one dashboard
-- **Live Data Integration**: Real-time market data and price updates
-- **Portfolio Analytics**: Track performance, volatility, and Sharpe ratios
-- **Risk Assessment**: Automated risk categorization and volatility analysis
+- **Multi-Asset Tracking:** Manage stocks, mutual funds, and crypto in one dashboard  
+- **Live Data Integration:** Real-time market updates and price monitoring  
+- **Portfolio Analytics:** Performance tracking, volatility analysis, and Sharpe ratios  
+- **Automated Risk Assessment:** Categorizes risk and volatility levels  
 
 ### 🎓 Financial Education Hub
-- **Learning Courses**: Comprehensive tutorials on stocks, crypto, and mutual funds
-- **Educational Content**: Videos, blogs, and interactive learning materials
-- **Beginner-Friendly**: Designed to grow your financial literacy step by step
+- **Courses & Tutorials:** Beginner-to-advanced modules on stocks, crypto, and mutual funds  
+- **Video & Blog Content:** Expert insights and interactive learning  
+- **Guided Learning Paths:** Progressive education for improving financial literacy  
 
 ### 🔐 Secure Authentication
-- **Auth0 Integration**: Enterprise-grade authentication and user management
-- **Personalized Experience**: User-specific portfolios and preferences
-- **Secure Data**: Protected user financial information
+- **Auth0 Integration:** Enterprise-grade authentication and authorization  
+- **Personalized Portfolios:** Securely linked to user profiles  
+- **Data Protection:** End-to-end encrypted storage of user financial data  
+
+---
 
 ## 🛠️ Tech Stack
 
-### Frontend
-- **Next.js 15.5.3** with App Router
-- **React 19.1.0** with modern hooks
-- **TypeScript** for type safety
-- **Tailwind CSS 4.1.16** for styling
-- **Framer Motion** for animations
-- **Recharts** for data visualization
+| **Layer** | **Technology** | **Purpose** |
+|------------|----------------|--------------|
+| **Frontend** | Next.js 15.5.3, React 19.1.0, TypeScript, Tailwind CSS 4.1.16, Framer Motion, Recharts | UI development, animations, and responsive data visualization |
+| **Backend** | FastAPI (Python), MongoDB | API services, data persistence, and analytics |
+| **AI Integration** | Google Gemini 2.0 (via OpenRouter API) | Personalized investment intelligence |
+| **Authentication** | Auth0 | Secure login and identity management |
+| **Visualization** | Recharts, Framer Motion | Real-time charts and animated interfaces |
+| **Communication** | Axios | API requests and backend interaction |
+| **Icons & UI** | Lucide React, shadcn/ui | Consistent and modern UI components |
+| **Deployment** | Vercel, FastAPI Hosting | Frontend + backend deployment environment |
 
-### Backend
-- **FastAPI** Python backend
-- **MongoDB** for data persistence
-- **Auth0** for authentication
-- **OpenRouter API** with Google Gemini 2.0
+---
 
-### Key Dependencies
-- `@auth0/nextjs-auth0` - Authentication
-- `openai` - AI model integration via OpenRouter
-- `axios` - HTTP client
-- `recharts` - Charts and graphs
-- `framer-motion` - Animations
-- `lucide-react` - Icons
 
 ## 🚀 Getting Started
 
@@ -214,4 +210,4 @@ For support and questions:
 
 ---
 
-Built with ❤️ using Next.js, FastAPI, and AI technology to democratize financial intelligence.
+Built with ❤️ by PHOENIX ARCANA 🐦‍🔥
