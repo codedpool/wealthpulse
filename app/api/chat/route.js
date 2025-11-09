@@ -7,7 +7,7 @@ export async function POST(request) {
       throw new Error("OPENROUTER_API_KEY is not configured");
     }
 
-    const { prompt } = await request.json();
+    const { prompt, enableWebSearch = true } = await request.json();
     
     if (!prompt) {
       throw new Error("No prompt provided");
@@ -24,8 +24,9 @@ export async function POST(request) {
 
     // Log API call attempt
     console.log("Calling OpenRouter API with prompt:", prompt.substring(0, 100) + "...");
+    console.log("Web search enabled:", enableWebSearch);
 
-    // Set system context for financial advisor role
+    // Set system context for financial advisor role with web search context
     const messages = [
       {
         role: "system",
@@ -33,23 +34,62 @@ export async function POST(request) {
           - Keep responses short and focused on the user's question
           - Use simple language, avoiding technical jargon
           - Format advice in clear, numbered points
+          - When using web search results, prioritize recent and reliable financial information
+          - Always cite sources when using current market data or recent news
           - If uncertain, be transparent about limitations
           - Focus on educational guidance, not specific investment advice
-          - Stay professional and factual in responses`
+          - Stay professional and factual in responses
+          - When current market data is available, use it to provide more accurate insights`
       },
       { role: "user", content: prompt }
     ];
 
     console.log(`Attempting chat completion with prompt:`, prompt.substring(0, 100) + "...");
     
-    const chatStream = await openaiClient.chat.completions.create({
+    // Prepare the request configuration
+    const requestConfig = {
       messages: messages,
-      model: "google/gemini-2.5-flash",
       temperature: 1,
       max_tokens: 1024,
       top_p: 1,
       stream: true,
-    });
+    };
+
+    // Configure model and web search based on enableWebSearch flag
+    if (enableWebSearch) {
+      // Option 1: Use the :online variant (simpler approach)
+      requestConfig.model = "google/gemini-2.5-pro:online";
+      
+      // Option 2: Alternative - use web plugin explicitly with custom settings
+      // Uncomment the lines below and comment the line above to use the plugin approach
+      /*
+      requestConfig.model = "google/gemini-2.5-pro";
+      requestConfig.plugins = [
+        {
+          id: "web",
+          max_results: 5, // Default is 5, can adjust between 1-10
+          search_prompt: "Find the most recent and relevant financial information about this topic:" // Custom search prompt
+        }
+      ];
+      */
+      
+      // Option 3: Use Google's built-in web search for Gemini (alternative)
+      // Uncomment the lines below to use Google's native web search instead
+      /*
+      requestConfig.model = "google/gemini-2.5-pro";
+      requestConfig.web_search_options = {
+        search_context_size: "medium" // low, medium, or high
+      };
+      */
+      
+      console.log("Using model with web search:", requestConfig.model);
+    } else {
+      // Use standard model without web search
+      requestConfig.model = "google/gemini-2.5-pro";
+      console.log("Using standard model without web search");
+    }
+    
+    const chatStream = await openaiClient.chat.completions.create(requestConfig);
     
     console.log("Chat stream created successfully");
     return createStreamResponse(chatStream);
@@ -67,6 +107,7 @@ export async function POST(request) {
             }
             controller.close();
           } catch (error) {
+            console.error("Stream error:", error);
             controller.error(error);
           }
         },
@@ -112,6 +153,14 @@ export async function POST(request) {
       return NextResponse.json(
         { error: "Too many requests. Please try again later." },
         { status: 429 }
+      );
+    }
+
+    // Handle web search specific errors
+    if (error.message?.includes('web search')) {
+      return NextResponse.json(
+        { error: "Web search is temporarily unavailable. Try again later." },
+        { status: 503 }
       );
     }
 
