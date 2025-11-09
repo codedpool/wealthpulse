@@ -147,6 +147,22 @@ wealthpulse/
 ### Authentication
 - `/api/auth/[auth0]` - Auth0 authentication endpoints
 
+## 🖼️ Screenshots
+
+### Landing Page
+![WealthPulse Landing Page](./public/frontend.png)
+![WealthPulse Landing Page](./public/frontend2.png)
+
+### Stocks Component
+![Stocks Dashboard](./public/stocks.png)
+![Stocks Data](./public/data.png)
+
+### Portfolio
+![Portfolio](./public/portfolio.png)
+
+### Education  Hub
+![Education Page](./public/edu.png)
+
 ## 🎯 Key Features in Detail
 
 ### AI-Powered Analysis
@@ -176,6 +192,18 @@ npm run build    # Build for production with Turbopack
 npm run start    # Start production server
 npm run lint     # Run ESLint
 ```
+
+## 🚀 Deployment
+
+### Vercel 
+1. Connect your GitHub repository to Vercel
+2. Configure environment variables
+3. Deploy with automatic CI/CD
+
+### Manual Deployment
+1. Build the application: `npm run build`
+2. Deploy the `.next` folder to your hosting provider
+3. Set up the FastAPI backend on your preferred cloud platform
 
 ## 🤝 Contributing
 
