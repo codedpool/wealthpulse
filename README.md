@@ -96,7 +96,7 @@ cd backend
 pip install -r requirements.txt
 
 # Run FastAPI server
-python main.py
+python -m uvicorn main:app --reload
 ```
 
 Open [http://localhost:3000](http://localhost:3000) to view the application.
@@ -176,18 +176,6 @@ npm run build    # Build for production with Turbopack
 npm run start    # Start production server
 npm run lint     # Run ESLint
 ```
-
-## 🚀 Deployment
-
-### Vercel (Recommended)
-1. Connect your GitHub repository to Vercel
-2. Configure environment variables
-3. Deploy with automatic CI/CD
-
-### Manual Deployment
-1. Build the application: `npm run build`
-2. Deploy the `.next` folder to your hosting provider
-3. Set up the FastAPI backend on your preferred cloud platform
 
 ## 🤝 Contributing
 
