@@ -147,6 +147,15 @@ wealthpulse/
 ### Authentication
 - `/api/auth/[auth0]` - Auth0 authentication endpoints
 
+## 🖼️ Screenshots
+
+### Landing Page
+![WealthPulse Landing Page](./public/frontend.png)
+![WealthPulse Landing Page](./public/frontend2.png)
+
+
+
+
 ## 🎯 Key Features in Detail
 
 ### AI-Powered Analysis
@@ -179,7 +188,7 @@ npm run lint     # Run ESLint
 
 ## 🚀 Deployment
 
-### Vercel (Recommended)
+### Vercel 
 1. Connect your GitHub repository to Vercel
 2. Configure environment variables
 3. Deploy with automatic CI/CD
