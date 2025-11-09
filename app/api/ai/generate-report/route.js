@@ -85,64 +85,71 @@ ${itemsList}
 
       prompt = `You are a professional financial analyst creating a comprehensive PORTFOLIO investment report. This portfolio contains multiple assets including stocks, mutual funds, and/or cryptocurrencies. Generate a detailed, structured analysis suitable for serious investors.
 
+IMPORTANT FORMATTING INSTRUCTIONS:
+- DO NOT use hash symbols (#) or asterisks (**) for headings
+- Use UPPERCASE TEXT for section titles (e.g., EXECUTIVE SUMMARY)
+- Use bullet points (•) or dashes (-) for all lists and sub-points
+- Keep formatting clean and professional
+- Headings should be plain text without any special formatting
+
 Structure the report with the following sections:
 
-# EXECUTIVE SUMMARY
-- Brief portfolio overview
-- Key highlights and notable holdings
-- Overall portfolio health rating
+EXECUTIVE SUMMARY
+• Brief portfolio overview
+• Key highlights and notable holdings
+• Overall portfolio health rating
 
-# PORTFOLIO COMPOSITION ANALYSIS
-- Asset allocation breakdown (stocks vs MF vs crypto)
-- Diversification assessment
-- Sector/category exposure (if discernible)
+PORTFOLIO COMPOSITION ANALYSIS
+• Asset allocation breakdown (stocks vs MF vs crypto)
+• Diversification assessment
+• Sector/category exposure (if discernible)
 
-# AGGREGATE PERFORMANCE ANALYSIS
-- Overall portfolio returns
-- Individual star performers and underperformers
-- Consistency of returns across holdings
-- Comparison to typical benchmarks
+AGGREGATE PERFORMANCE ANALYSIS
+• Overall portfolio returns
+• Individual star performers and underperformers
+• Consistency of returns across holdings
+• Comparison to typical benchmarks
 
-# RISK ASSESSMENT
-- Portfolio-wide volatility analysis
-- Individual asset risk profiles
-- Risk concentration issues
-- Sharpe ratio interpretation
-- Overall risk category (Conservative/Balanced/Aggressive)
+RISK ASSESSMENT
+• Portfolio-wide volatility analysis
+• Individual asset risk profiles
+• Risk concentration issues
+• Sharpe ratio interpretation
+• Overall risk category (Conservative/Balanced/Aggressive)
 
-# PREDICTIVE ANALYSIS
-- Monte Carlo simulation insights for portfolio
-- Expected growth trajectory
-- Best and worst case scenarios
-- Probability assessment
+PREDICTIVE ANALYSIS
+• Monte Carlo simulation insights for portfolio
+• Expected growth trajectory
+• Best and worst case scenarios
+• Probability assessment
 
-# DIVERSIFICATION REVIEW
-- Current diversification quality
-- Over/under-exposed areas
-- Suggestions for better balance
-- Correlation between holdings
+DIVERSIFICATION REVIEW
+• Current diversification quality
+• Over/under-exposed areas
+• Suggestions for better balance
+• Correlation between holdings
 
-# INDIVIDUAL HOLDINGS REVIEW
-- Brief assessment of each major holding
-- Which holdings to hold, increase, or consider exiting
-- Rationale for each suggestion
+INDIVIDUAL HOLDINGS REVIEW
+• Brief assessment of each major holding
+• Which holdings to hold, increase, or consider exiting
+• Rationale for each suggestion
 
-# INVESTMENT STRATEGY RECOMMENDATIONS
-- Ideal investment horizon
-- Rebalancing suggestions
-- New additions to consider
-- Portfolio optimization steps
+INVESTMENT STRATEGY RECOMMENDATIONS
+• Ideal investment horizon
+• Rebalancing suggestions
+• New additions to consider
+• Portfolio optimization steps
 
-# STRENGTHS & AREAS FOR IMPROVEMENT
-- What's working well
-- What needs attention
-- Competitive positioning of portfolio
+STRENGTHS & AREAS FOR IMPROVEMENT
+• What's working well
+• What needs attention
+• Competitive positioning of portfolio
 
-# FINAL RECOMMENDATION
-- Overall portfolio rating
-- Action plan for next 3-6 months
-- Risk-reward assessment
-- Specific next steps
+FINAL RECOMMENDATION
+• Overall portfolio rating
+• Action plan for next 3-6 months
+• Risk-reward assessment
+• Specific next steps
 
 Use professional but clear language. Reference specific holdings by name. Be objective and data-driven.
 
@@ -197,51 +204,58 @@ MONTE CARLO SIMULATION (1 YEAR FORECAST)
 
       prompt = `You are a professional financial analyst creating a comprehensive investment report. Generate a detailed, structured investment analysis report for this mutual fund. The report should be professional, data-driven, and suitable for serious investors.
 
+IMPORTANT FORMATTING INSTRUCTIONS:
+- DO NOT use hash symbols (#) or asterisks (**) for headings
+- Use UPPERCASE TEXT for section titles (e.g., EXECUTIVE SUMMARY)
+- Use bullet points (•) or dashes (-) for all lists and sub-points
+- Keep formatting clean and professional
+- Headings should be plain text without any special formatting
+
 Structure the report with the following sections:
 
-# EXECUTIVE SUMMARY
-- Brief overview of the fund
-- Key highlights (2-3 sentences)
-- Overall rating/recommendation
+EXECUTIVE SUMMARY
+• Brief overview of the fund
+• Key highlights (2-3 sentences)
+• Overall rating/recommendation
 
-# FUND OVERVIEW
-- Fund house reputation and track record
-- Investment strategy and objectives
-- Target investor profile
+FUND OVERVIEW
+• Fund house reputation and track record
+• Investment strategy and objectives
+• Target investor profile
 
-# PERFORMANCE ANALYSIS
-- Historical performance evaluation
-- Return analysis (absolute and risk-adjusted)
-- Comparison to category benchmarks (if applicable)
-- Performance consistency
+PERFORMANCE ANALYSIS
+• Historical performance evaluation
+• Return analysis (absolute and risk-adjusted)
+• Comparison to category benchmarks (if applicable)
+• Performance consistency
 
-# RISK ASSESSMENT
-- Volatility analysis
-- Sharpe ratio interpretation
-- Risk category (Conservative/Moderate/Aggressive)
-- Downside protection
+RISK ASSESSMENT
+• Volatility analysis
+• Sharpe ratio interpretation
+• Risk category (Conservative/Moderate/Aggressive)
+• Downside protection
 
-# PREDICTIVE ANALYSIS
-- Monte Carlo simulation insights
-- Expected returns and probability
-- Best and worst case scenarios
-- Confidence level in predictions
+PREDICTIVE ANALYSIS
+• Monte Carlo simulation insights
+• Expected returns and probability
+• Best and worst case scenarios
+• Confidence level in predictions
 
-# INVESTMENT SUITABILITY
-- Ideal investment horizon
-- Suitable investor types
-- Portfolio allocation suggestions
-- Entry/exit strategy recommendations
+INVESTMENT SUITABILITY
+• Ideal investment horizon
+• Suitable investor types
+• Portfolio allocation suggestions
+• Entry/exit strategy recommendations
 
-# STRENGTHS & WEAKNESSES
-- Key advantages
-- Areas of concern
-- Competitive positioning
+STRENGTHS & WEAKNESSES
+• Key advantages
+• Areas of concern
+• Competitive positioning
 
-# FINAL RECOMMENDATION
-- Investment rating (Strong Buy/Buy/Hold/Sell)
-- Risk-reward assessment
-- Action items for investors
+FINAL RECOMMENDATION
+• Investment rating (Strong Buy/Buy/Hold/Sell)
+• Risk-reward assessment
+• Action items for investors
 
 Use professional financial terminology but ensure clarity. Include specific numbers from the data. Be objective and balanced.
 
