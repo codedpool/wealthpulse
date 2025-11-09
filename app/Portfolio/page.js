@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import useUser from "@/lib/authClient";
 import AIDostModal from "../components/AIDostModal";
 import AIReportModal from "../components/AIReportModal";
@@ -17,7 +17,7 @@ export default function PortfolioPage() {
   const [monteCarlo, setMonteCarlo] = useState({});
 
   // Function to calculate aggregate portfolio metrics
-  const calculatePortfolioMetrics = async () => {
+  const calculatePortfolioMetrics = useCallback(async () => {
     if (!portfolioItems.length) return;
 
     try {
@@ -48,11 +48,11 @@ export default function PortfolioPage() {
     } catch (error) {
       console.error("Error calculating portfolio metrics:", error);
     }
-  };
+  }, [portfolioItems]);
 
   useEffect(() => {
     calculatePortfolioMetrics();
-  }, [portfolioItems]);
+  }, [calculatePortfolioMetrics]);
 
   useEffect(() => {
     const fetchPortfolio = async () => {

@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import Image from "next/image";
 import { useParams } from "next/navigation";
 import {
   LineChart,
@@ -275,7 +276,7 @@ export default function CryptoDetailsPage() {
               <div className="bg-[#181f31] rounded-xl p-4 border border-gray-700">
                 <div className="flex items-center justify-center gap-4 mb-4">
                   {meta?.image && (
-                    <img src={meta.image} alt={meta.name} className="w-12 h-12 rounded-full" />
+                    <Image src={meta.image} alt={meta.name} width={48} height={48} className="w-12 h-12 rounded-full" />
                   )}
                   <h2 className="text-xl font-bold text-white text-center">
                     {meta?.name || symbol} {meta?.symbol && `(${meta.symbol.toUpperCase()})`}
@@ -382,7 +383,7 @@ export default function CryptoDetailsPage() {
                   </div>
                   <div className="mt-6 space-y-3 text-base border-t border-gray-700 pt-4">
                     <div className="flex justify-between items-center">
-                      <span className="text-gray-300 font-medium">Coins You'll Get:</span> 
+                      <span className="text-gray-300 font-medium">Coins You&apos;ll Get:</span> 
                       <span className="font-bold text-white text-lg">
                         {meta?.current_price ? (amount / meta.current_price).toFixed(8) : '--'}
                       </span>
@@ -402,7 +403,7 @@ export default function CryptoDetailsPage() {
                       <span className="font-bold text-white text-lg">{formatPct(riskVolatility.annualized_return)}</span>
                     </div>
                     <p className="text-sm opacity-70 mt-4 text-gray-400 italic">
-                      *Crypto investments are highly volatile. Past performance doesn't guarantee future results.
+                      *Crypto investments are highly volatile. Past performance doesn&apos;t guarantee future results.
                     </p>
                   </div>
                 </div>
